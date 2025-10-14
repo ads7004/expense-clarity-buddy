@@ -1,73 +1,90 @@
-# Welcome to your Lovable project
+# Expense Splitter Service
 
-## Project info
+A web application for splitting expenses among group members with intelligent settlement optimization. Built with React, TypeScript, and AI-assisted development.
 
-**URL**: https://lovable.dev/projects/74abddf6-6aa1-4b49-89d2-2cab8d20b22a
+## 🚀 Quick Start
 
-## How can I edit this code?
+```bash
+# Install dependencies
+npm install
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/74abddf6-6aa1-4b49-89d2-2cab8d20b22a) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Run tests
+npm test
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## ✨ Core Features
 
-**Use GitHub Codespaces**
+1. **Group Creation** - Create expense groups with multiple members
+2. **Expense Tracking** - Add expenses with partial participant splits
+3. **Smart Settlement Optimization** - Minimizes number of payments using greedy algorithm
+4. **Real-time Balance Calculation** - Automatic updates as expenses are added
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📚 Interview Deliverables
 
-## What technologies are used for this project?
+### 1. Working Solution ✅
+- Functional core features with running instructions above
+- Sample data and test scenarios included
 
-This project is built with:
+### 2. AI Interaction Documentation ✅
+See [AI_INTERACTION_DOCUMENTATION.md](./AI_INTERACTION_DOCUMENTATION.md)
+- Complete prompt history with iterations
+- Debugging examples and refinement process
+- Evidence of thoughtful AI collaboration
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 3. Design Summary ✅
+See [DESIGN_SUMMARY.md](./DESIGN_SUMMARY.md)
+- Architecture decisions and technology choices
+- AI influence on design
+- Trade-offs and scalability considerations
 
-## How can I deploy this project?
+### 4. Test Evidence ✅
+See [TEST_PLAN.md](./TEST_PLAN.md) and run `npm test`
+- Comprehensive test plan with edge cases
+- 100% coverage of core algorithm
+- Realistic test scenarios
 
-Simply open [Lovable](https://lovable.dev/projects/74abddf6-6aa1-4b49-89d2-2cab8d20b22a) and click on Share -> Publish.
+### 5. Interview Presentation Guide ✅
+See [INTERVIEW_PRESENTATION_GUIDE.md](./INTERVIEW_PRESENTATION_GUIDE.md)
+- 30-minute structured demo flow
+- Common Q&A responses
+- Pre-interview checklist
 
-## Can I connect a custom domain to my Lovable project?
+## 🏗️ Technology Stack
 
-Yes, you can!
+- **Frontend**: React 18.3 + TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui
+- **State**: React Context API
+- **Testing**: Vitest + Testing Library
+- **Build**: Vite
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📊 Sample Demo Data
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Scenario**: Weekend Trip (3 friends)
+- Alice pays $300 for hotel (split 3 ways)
+- Bob pays $90 for dinner (split 3 ways)
+- Charlie pays $45 for breakfast (split between Alice & Charlie only)
+
+**Result**: 2 optimized settlement payments instead of 6 possible transactions
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # UI components
+├── contexts/           # State management
+├── lib/               # Core algorithms
+├── types/             # TypeScript interfaces
+├── pages/             # Route pages
+└── __tests__/         # Unit tests
+```
+
+## 🎯 Interview Ready
+
+Development environment is ready for live modifications. All tests pass, code is documented, and the application demonstrates clean architecture with AI-assisted development.
+
+For detailed interview preparation, see [INTERVIEW_PRESENTATION_GUIDE.md](./INTERVIEW_PRESENTATION_GUIDE.md)
