@@ -3,13 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Plus, X } from "lucide-react";
 import { useExpense } from "@/contexts/ExpenseContext";
 import { toast } from "sonner";
+import { Currency } from "@/types/expense";
+import { currencyNames, currencySymbols } from "@/lib/currencyUtils";
 
 export function GroupSetup() {
   const { createGroup } = useExpense();
   const [groupName, setGroupName] = useState("");
+  const [currency, setCurrency] = useState<Currency>("USD");
   const [members, setMembers] = useState<string[]>(["", ""]);
 
   const addMember = () => {
@@ -43,7 +47,7 @@ export function GroupSetup() {
       return;
     }
 
-    createGroup(groupName, validMembers);
+    createGroup(groupName, validMembers, currency);
     toast.success("Group created successfully!");
   };
 
@@ -69,6 +73,24 @@ export function GroupSetup() {
                 onChange={(e) => setGroupName(e.target.value)}
                 className="text-base"
               />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="currency" className="text-base font-semibold">
+                Currency
+              </Label>
+              <Select value={currency} onValueChange={(value) => setCurrency(value as Currency)}>
+                <SelectTrigger id="currency" className="text-base">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {(Object.keys(currencyNames) as Currency[]).map((curr) => (
+                    <SelectItem key={curr} value={curr}>
+                      {currencySymbols[curr]} {currencyNames[curr]} ({curr})
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="space-y-3">

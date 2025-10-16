@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useExpense } from "@/contexts/ExpenseContext";
 import { formatDistanceToNow } from "date-fns";
+import { formatCurrency } from "@/lib/currencyUtils";
 
 export function ExpenseList() {
   const { group } = useExpense();
@@ -49,10 +50,10 @@ export function ExpenseList() {
                 </div>
                 <div className="text-right">
                   <div className="text-xl font-bold text-primary">
-                    ${expense.amount.toFixed(2)}
+                    {formatCurrency(expense.amount, group.currency)}
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    ${(expense.amount / expense.splitBetween.length).toFixed(2)} each
+                    {formatCurrency(expense.amount / expense.splitBetween.length, group.currency)} each
                   </div>
                 </div>
               </div>

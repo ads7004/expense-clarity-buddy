@@ -5,6 +5,7 @@ import { BalanceSummary } from "@/components/BalanceSummary";
 import { SettlementSuggestions } from "@/components/SettlementSuggestions";
 import { ExpenseList } from "@/components/ExpenseList";
 import { Users, LogOut } from "lucide-react";
+import { currencyNames } from "@/lib/currencyUtils";
 
 export default function Dashboard() {
   const { group, clearGroup } = useExpense();
@@ -23,7 +24,7 @@ export default function Dashboard() {
               <div>
                 <h1 className="text-xl font-bold">{group.name}</h1>
                 <p className="text-sm text-muted-foreground">
-                  {group.members.length} members • {group.expenses.length} expenses
+                  {group.members.length} members • {group.expenses.length} expenses • {group.currency}
                 </p>
               </div>
             </div>

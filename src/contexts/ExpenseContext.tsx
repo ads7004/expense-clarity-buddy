@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useState } from "react";
-import { ExpenseGroup, Expense, Member, Balance, Settlement } from "@/types/expense";
+import { ExpenseGroup, Expense, Member, Balance, Settlement, Currency } from "@/types/expense";
 import { calculateBalances, calculateSettlements } from "@/lib/settlementAlgorithm";
 
 interface ExpenseContextType {
   group: ExpenseGroup | null;
-  createGroup: (name: string, memberNames: string[]) => void;
+  createGroup: (name: string, memberNames: string[], currency: Currency) => void;
   addExpense: (expense: Omit<Expense, "id" | "date">) => void;
   getBalances: () => Balance[];
   getSettlements: () => Settlement[];
@@ -16,7 +16,7 @@ const ExpenseContext = createContext<ExpenseContextType | undefined>(undefined);
 export function ExpenseProvider({ children }: { children: React.ReactNode }) {
   const [group, setGroup] = useState<ExpenseGroup | null>(null);
 
-  const createGroup = (name: string, memberNames: string[]) => {
+  const createGroup = (name: string, memberNames: string[], currency: Currency) => {
     const members: Member[] = memberNames.map((name, index) => ({
       id: `member-${index}`,
       name: name.trim()
@@ -25,6 +25,7 @@ export function ExpenseProvider({ children }: { children: React.ReactNode }) {
     setGroup({
       id: "group-1",
       name,
+      currency,
       members,
       expenses: []
     });

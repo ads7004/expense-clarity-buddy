@@ -2,10 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useExpense } from "@/contexts/ExpenseContext";
 import { ArrowUpCircle, ArrowDownCircle, CheckCircle } from "lucide-react";
+import { formatCurrency } from "@/lib/currencyUtils";
 
 export function BalanceSummary() {
-  const { getBalances } = useExpense();
+  const { getBalances, group } = useExpense();
   const balances = getBalances();
+
+  if (!group) return null;
 
   return (
     <Card>
@@ -38,14 +41,14 @@ export function BalanceSummary() {
                   ) : isPositive ? (
                     <div className="space-y-1">
                       <div className="text-lg font-bold text-success">
-                        ${balance.balance.toFixed(2)}
+                        {formatCurrency(balance.balance, group.currency)}
                       </div>
                       <div className="text-xs text-muted-foreground">gets back</div>
                     </div>
                   ) : (
                     <div className="space-y-1">
                       <div className="text-lg font-bold text-destructive">
-                        ${Math.abs(balance.balance).toFixed(2)}
+                        {formatCurrency(Math.abs(balance.balance), group.currency)}
                       </div>
                       <div className="text-xs text-muted-foreground">owes</div>
                     </div>

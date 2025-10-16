@@ -24,9 +24,12 @@ export interface Settlement {
   amount: number;
 }
 
+export type Currency = 'USD' | 'INR' | 'EUR' | 'GBP';
+
 export interface ExpenseGroup {
   id: string;
   name: string;
+  currency: Currency;
   members: Member[];
   expenses: Expense[];
 }

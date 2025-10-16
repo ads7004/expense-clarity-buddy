@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useExpense } from "@/contexts/ExpenseContext";
 import { toast } from "sonner";
+import { currencySymbols } from "@/lib/currencyUtils";
 
 export function ExpenseForm() {
   const { group, addExpense } = useExpense();
@@ -82,7 +83,7 @@ export function ExpenseForm() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="amount">Amount ($)</Label>
+            <Label htmlFor="amount">Amount ({currencySymbols[group.currency]})</Label>
             <Input
               id="amount"
               type="number"

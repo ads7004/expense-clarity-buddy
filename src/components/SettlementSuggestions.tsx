@@ -2,10 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import { useExpense } from "@/contexts/ExpenseContext";
 import { ArrowRight } from "lucide-react";
+import { formatCurrency } from "@/lib/currencyUtils";
 
 export function SettlementSuggestions() {
-  const { getSettlements } = useExpense();
+  const { getSettlements, group } = useExpense();
   const settlements = getSettlements();
+
+  if (!group) return null;
 
   if (settlements.length === 0) {
     return (
@@ -46,7 +49,7 @@ export function SettlementSuggestions() {
               </div>
               <div className="text-right">
                 <div className="text-xl font-bold text-accent">
-                  ${settlement.amount.toFixed(2)}
+                  {formatCurrency(settlement.amount, group.currency)}
                 </div>
               </div>
             </div>
